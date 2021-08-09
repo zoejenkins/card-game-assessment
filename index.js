@@ -38,6 +38,8 @@ let name2 = (definedName2 || pickedrandomName2)
 let livesPlayer1 = lives
 let livesPlayer2 = lives
 
+
+do{
 //picks random values for cards
   card1 = Math.floor(Math.random() * 13 + 1);
   card2 = Math.floor(Math.random() * 13 + 1);
@@ -46,40 +48,59 @@ let livesPlayer2 = lives
   cardDrawn1 = Math.floor(Math.random() * 13 + 1);
   cardDrawn2 = Math.floor(Math.random() * 13 + 1);
 
+
   console.log(name1 + ' the card on the table is a ' + card1)
 
   let hiLo1 = prompt('Do you think your card will be higher or lower?')
 
   if (hiLo1 == 'higher' && card1 < cardDrawn1){
-    console.log('Congrats! Your card was a ' + cardDrawn1 + ' which is higher than the first card. You win! Point to you!')
+    console.log('Congrats! Your card was a ' + cardDrawn1 + ' which is higher than the first card. No lives lost!')
   } else if(hiLo1 == 'higher' && card1 > cardDrawn1){
-    console.log('Uh oh. Your card was a ' + cardDrawn1 + ' which is lower than the first card. You lose! No points for you.')
+    console.log('Uh oh. Your card was a ' + cardDrawn1 + ' which is lower than the first card. You lose a life!.')
+    livesPlayer1--
   } else if(hiLo1 == 'lower' && card1 > cardDrawn1){
-    console.log('Congrats! Your card was a ' + cardDrawn1 + ' which is lower than the first card. You win! Point to you!')
+    console.log('Congrats! Your card was a ' + cardDrawn1 + ' which is lower than the first card. No lives lost!')
   } else if(hiLo1 == 'lower' && card1 < cardDrawn1){
-   console.log('Uh oh. Your card was a ' + cardDrawn1 + ' which is higher than the first card. You lose! No points for you.')
+   console.log('Uh oh. Your card was a ' + cardDrawn1 + ' which is higher than the first card. You lose a life!')
+   livesPlayer1--
   } else if(card1 == cardDrawn1){
-    console.log('Your cards were even. Unlucky! No points for you.')
+    console.log('Your cards were even. Unlucky! No lives lost.')
   } else{
     hiLo1 = prompt('Do you think your card will be higher or lower?')
   }
+
 
 console.log(name2 + ' your card is ' + card2)
 
 let hiLo2 = prompt('Do you think your card will be higher or lower?')
 
   if (hiLo2 == 'higher' && card2 < cardDrawn2){
-    console.log('Congrats! Your card was a ' + cardDrawn2 + ' which is higher than the first card. You win! No lives taken.')
+    console.log('Congrats! Your card was a ' + cardDrawn2 + ' which is higher than the first card. No lives lost!')
   } else if(hiLo2 == 'higher' && card2 > cardDrawn2){
-    console.log('Uh oh. Your card was a ' + cardDrawn2 + ' which is lower than the first card. You lose! No points for you.')
+    console.log('Uh oh. Your card was a ' + cardDrawn2 + ' which is lower than the first card. You lose a life!')
+    livesPlayer2--
   } else if(hiLo2 == 'lower' && card2 > cardDrawn2){
-    console.log('Congrats! Your card was a ' + cardDrawn2 + ' which is lower than the first card. You win! Point to you!')
+    console.log('Congrats! Your card was a ' + cardDrawn2 + ' which is lower than the first card. No lives lost!')
   } else if(hiLo2 == 'lower' && card2 < cardDrawn2){
-   console.log('Uh oh. Your card was a ' + cardDrawn2 + ' which is higher than the first card. You lose! No points for you.')
+   console.log('Uh oh. Your card was a ' + cardDrawn2 + ' which is higher than the first card. You lose a life!')
+   livesPlayer2--
   } else if(card2 == cardDrawn2){
-    console.log('Your cards were even. Unlucky! No points for you.')
+    console.log('Your cards were even. Unlucky! No lives lost.')
   } else{
     hiLo2 = prompt('Do you think your card will be higher or lower?')
   }
+}while(livesPlayer1 > 0 && livesPlayer2 > 0)
 
-//next time change points to lives and take lives off every time i guess incorrectly
+console.log(name1 + '\'s total lives: ' + livesPlayer1)
+console.log(name2 + '\'s total lives: ' + livesPlayer2)
+if (livesPlayer1 <= 0){
+  console.log(name1 + ' you lost all your lives. You lose! ' + name2 + ' you have lives left. You win!')
+} else if (livesPlayer2 <=0){
+  console.log(name2 + ' you lost all your lives. You lose! ' + name1 + ' you have lives left. You win!')
+} else if (livesPlayer2 <=0 && livesPlayer1 <= 0){
+  console.log('You both have no lives left! You both lose!')
+} else {
+  console.log('You both have lives left! You both win!')
+}
+
+B===o
